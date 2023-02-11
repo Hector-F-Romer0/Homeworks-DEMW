@@ -78,3 +78,14 @@ button:focus-visible {
 	align-items: center;
 	justify-content: center;
 }
+
+.my-button {
+	margin: 1em;
+	font-size: 1.5rem;
+	padding: 1em;
+	min-width: 200px;
+}
+
+.main-title {
+	margin: 0.6em 0;
+}
