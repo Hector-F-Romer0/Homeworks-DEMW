@@ -1,35 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import "./index.css";
+import { useCounter } from "./hooks/useCounter";
 
 const FirstApp = ({ value }) => {
-	const [counter, setCounter] = useState(value);
-	const handleAdd = () => {
-		setCounter(counter + 1);
-	};
-
-	const handleSubstract = () => {
-		setCounter(counter - 1);
-	};
-
-	const handleReset = () => {
-		setCounter(value);
-	};
+	const { counter, increment, decrement, reset } = useCounter(value);
 
 	return (
 		<div className="my-container">
-			<h1>My first App in Desarrollo de Experiencias Multimedia para la Web 🥶</h1>
-			<span>10</span>
 			<h1 className="main-title">Has recolectado {counter} piñas 🍍</h1>
-			{counter > 0 ? <h1 className="main-title">😀</h1> : <h1 className="main-title">😥</h1>}
-			<button className="my-button" onClick={handleAdd}>
-				Presioname
+			{value > 0 ? <h1 className="main-title">😀</h1> : <h1 className="main-title">😥</h1>}
+			<button className="my-button" onClick={increment}>
+				Sumar
 			</button>
-			<button className="my-button" onClick={handleSubstract}>
+			<button className="my-button" onClick={decrement}>
 				Restar
 			</button>
-			<button className="my-button" onClick={handleReset}>
+			<button className="my-button" onClick={reset}>
 				Resetear
 			</button>
 		</div>
