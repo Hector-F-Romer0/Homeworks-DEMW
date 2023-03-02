@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { useCounter } from "../hooks/useCounter";
+import Loading from "./Loading";
 
 const MultipleCustomHooks = () => {
 	const { counter, increment } = useCounter(1);
@@ -12,17 +13,7 @@ const MultipleCustomHooks = () => {
 	}, [data]);
 
 	if (isLoading) {
-		return (
-			<div className="center-container">
-				<h1>Cargando...</h1>
-				<div class="newtons-cradle">
-					<div class="newtons-cradle__dot"></div>
-					<div class="newtons-cradle__dot"></div>
-					<div class="newtons-cradle__dot"></div>
-					<div class="newtons-cradle__dot"></div>
-				</div>
-			</div>
-		);
+		return <Loading />;
 	}
 
 	return (
