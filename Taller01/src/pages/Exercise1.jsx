@@ -3,27 +3,18 @@ import Clock from "../components/Clock";
 
 const Exercise1 = () => {
 	const [inputValue, setInputValue] = useState("");
-	const [seconds, setSeconds] = useState({
-		hours: 4,
-		minutes: 34,
-		seconds: 3,
-	});
-
-	const transformTime = (seconds) => {
-		const hours = Math.trunc(seconds / 3600);
-		const coef1 = seconds % 3600;
-		const minutes = Math.trunc(coef1 / 60);
-		const secondsTime = coef1 % 60;
-		return {
-			hours,
-			minutes,
-			seconds: secondsTime,
-		};
-	};
+	const [seconds, setSeconds] = useState(0);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setSeconds(transformTime(e.target[0].value));
+		const currentValue = e.target[0].value;
+		const intCurrentValue = Number(currentValue);
+		if (isNaN(intCurrentValue)) {
+			alert("El valor ingresado debe ser numérico.");
+			setInputValue("");
+			return;
+		}
+		setSeconds(intCurrentValue);
 		setInputValue("");
 	};
 
@@ -35,11 +26,10 @@ const Exercise1 = () => {
 		<div className="center-container">
 			<h1>Exercise 01 -clock 🕒</h1>
 			<h3>Inserta los segundos que desas convertir a formato Horas:minutos:segundos</h3>
-
 			<form action="" onSubmit={(e) => handleSubmit(e)}>
 				<input type="text" value={inputValue} onChange={(e) => handleChange(e)} />
 			</form>
-			<Clock time={seconds} />
+			<Clock seconds={seconds} />
 		</div>
 	);
 };
