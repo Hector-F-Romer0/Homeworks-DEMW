@@ -25,9 +25,9 @@ const Exercise5 = () => {
 
 	return (
 		<div className="center-container">
-			<h1>Exercise 5 - Numbers</h1>
+			<h1>Exercise 5 - Ordered numbers 🔂</h1>
 			<form action="" onSubmit={(e) => handleSubmit(e)}>
-				<Input type="text" label="Insert a number" />
+				<Input type="number" label="Insert a number" />
 				<button type="submit">Add</button>
 			</form>
 			<ul>
