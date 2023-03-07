@@ -88,3 +88,14 @@ button:focus-visible {
 	width: 200px;
 	margin-bottom: 1em;
 }
+table {
+	margin-top: 2em;
+	border: #fff solid 1px;
+}
+
+td {
+	border: #fff solid 1px;
+	padding: 0.5em 1em;
+	/* align-items: center; */
+	text-align: center;
+}
