@@ -93,6 +93,11 @@ table {
 	border: #fff solid 1px;
 }
 
+th {
+	border: #fff solid 1px;
+	background-color: #3ee8d781;
+}
+
 td {
 	border: #fff solid 1px;
 	padding: 0.5em 1em;
