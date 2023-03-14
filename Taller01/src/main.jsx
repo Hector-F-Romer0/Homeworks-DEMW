@@ -9,6 +9,7 @@ import Exercise5 from "./pages/Exercise5";
 import Exercise6 from "./pages/Exercise6";
 import Exercise7 from "./pages/Exercise7";
 import Exercise8 from "./pages/Exercise8";
+import Exercise9 from "./pages/Exercise9";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 		{/* <Exercise5 /> */}
 		{/* <Exercise6 /> */}
 		{/* <Exercise7 /> */}
-		<Exercise8 />
+		{/* <Exercise8 /> */}
+		{<Exercise9 />}
 	</>
 );
