@@ -214,3 +214,18 @@ blockquote figcaption {
 		animation-timing-function: ease-in;
 	}
 }
+
+.todo-container {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: auto;
+	grid-template-areas: "logic list";
+}
+
+.todo-logic-container {
+	grid-area: logic;
+}
+
+.todo-list-container {
+	grid-area: list;
+}
