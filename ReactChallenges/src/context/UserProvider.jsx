@@ -4,6 +4,6 @@ import { UserContext } from "./UserContext";
 const user = {};
 
 export const UserProvider = ({ children }) => {
-	const [user, setUser] = useState();
+	const [user, setUser] = useState({ username: "", password: "" });
 	return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };

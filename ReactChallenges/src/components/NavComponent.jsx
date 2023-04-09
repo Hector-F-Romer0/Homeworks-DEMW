@@ -1,47 +1,43 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const NavComponent = () => {
+	const { user, setUser } = useContext(UserContext);
+
+	const logout = () => {
+		console.log("Log out...");
+		setUser({ username: "", password: "" });
+	};
+
 	return (
-		<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-			<div class="container-fluid">
-				{/* <a class="navbar-brand" href="#">
-					Navbar
-				</a>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarNavAltMarkup"
-					aria-controls="navbarNavAltMarkup"
-					aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button> */}
-
-				{/* <NavLink to="/" className={(args) => `${args.isActive ? "active" : ""}`}>
-					Home
-				</NavLink> */}
-
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav">
+		<nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+			<div className="container-fluid">
+				{/* <div className="collapse navbar-collapse" id="navbarNavAltMarkup"> */}
+				<div className="navbar-nav me-auto mb-2 mb-lg-0">
+					<li className="nav-item">
 						<NavLink
-							to="/"
+							to="/home"
 							className={(args) => ` ${args.isActive ? "active-link" : ""} nav-link my-items-nav`}>
 							Home
 						</NavLink>
+					</li>
+
+					<NavLink
+						to="/about"
+						className={(args) => ` ${args.isActive ? "active-link" : ""} nav-link my-items-nav`}>
+						About
+					</NavLink>
+					<li className="nav-item">
 						<NavLink
-							to="/about"
+							to="/"
+							onClick={() => logout()}
 							className={(args) => ` ${args.isActive ? "active-link" : ""} nav-link my-items-nav`}>
-							About
+							Logout
 						</NavLink>
-						<NavLink
-							to="/login"
-							className={(args) => ` ${args.isActive ? "active-link" : ""} nav-link my-items-nav`}>
-							Login
-						</NavLink>
-					</div>
+					</li>
 				</div>
+				{/* </div> */}
 			</div>
 		</nav>
 	);
