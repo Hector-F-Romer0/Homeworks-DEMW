@@ -12,8 +12,8 @@ const NavComponent = () => {
 
 	return (
 		<nav className="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-			<div className="container-fluid">
-				{/* <div className="collapse navbar-collapse" id="navbarNavAltMarkup"> */}
+			{/* <div className="container-fluid"> */}
+			<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div className="navbar-nav me-auto mb-2 mb-lg-0">
 					<li className="nav-item">
 						<NavLink

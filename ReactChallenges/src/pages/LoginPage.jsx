@@ -21,8 +21,8 @@ const LoginPage = () => {
 	};
 
 	return (
-		<div class="card w-50 mx-auto">
-			<div class="card-body">
+		<div className="card w-50 mx-auto">
+			<div className="card-body">
 				<h1 className="card-title">Log in 👥</h1>
 				<form onSubmit={(e) => handleSubmit(e)} className="col-5">
 					<div className="mb-3 form-label">
