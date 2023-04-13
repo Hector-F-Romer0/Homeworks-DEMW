@@ -230,6 +230,26 @@ blockquote figcaption {
 	grid-area: list;
 }
 
+/* ? NAVBAR */
+
+nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: 60px;
+	background-color: #252525;
+	padding: 2em 1em;
+	color: #fff;
+	list-style-type: none;
+}
+
+nav > div:first-child {
+	display: flex;
+	flex-direction: row;
+	padding-left: 0 2em;
+}
+
 .active-link {
 	font-size: 1.2rem;
 	transition: all 0.2s ease;
