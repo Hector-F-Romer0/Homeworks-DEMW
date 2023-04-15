@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import ComponentApp from "./ComponentApp";
@@ -14,6 +14,11 @@ import MainApp from "./pages/MainApp";
 import App from "./components/App";
 
 import { store } from "./store/store";
+import Registro from "./Registro";
+import LogIn from "./LogIn";
+import NavComponent from "./components/NavComponent";
+import HomePage from "./pages/HomePage";
+import HomeFirebase from "./pages/HomeFirebase";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<Provider store={store}>
@@ -27,7 +32,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			{/* <TodoApp /> */}
 			{/* <Parent/> */}
 			{/* <MainApp /> */}
-			<App />
+			{/* <App /> */}
+			<NavLink to={"/"}>Register</NavLink>
+			<br />
+			<NavLink to={"/login"}>Log in</NavLink>
+			<Routes>
+				<Route index element={<Registro />}></Route>
+				<Route path="/login" element={<LogIn />}></Route>
+				<Route path="/home" element={<HomeFirebase />}></Route>
+			</Routes>
 		</BrowserRouter>
 	</Provider>
 );

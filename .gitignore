@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 /ReactChallenges/node_modules
+/backend

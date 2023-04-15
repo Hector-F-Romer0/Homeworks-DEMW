@@ -1,10 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
-
-const auth = getauth();
-
+import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,10 +13,13 @@ const firebaseConfig = {
 	projectId: "react-challenges-demw",
 	storageBucket: "react-challenges-demw.appspot.com",
 	messagingSenderId: "913052671650",
-	appId: "1:913052671650:web:07482a9c43a7aa63b441fb",
-	measurementId: "G-HWDJGB8QXB",
+	appId: "1:913052671650:web:d85eac87b8a52b6db441fb",
+	measurementId: "G-XB2DFY24EH",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const auth = getAuth(app);
+
+export { app, auth };
