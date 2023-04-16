@@ -5,6 +5,7 @@ import { registerAuth } from "./store/slices/auth/thunks";
 import { onAuthStateChanged } from "firebase/auth";
 import { logout, register } from "./store/slices/auth/AuthSlice";
 import { auth } from "./firebase/config";
+import Upload from "./components/Upload";
 
 const Registro = () => {
 	const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const Registro = () => {
 				<input type="password" name="password" onChange={(e) => onInputChange(e)} value={password} />
 				<button type="submit">Registro</button>
 			</form>
+			<hr />
 		</>
 	);
 };

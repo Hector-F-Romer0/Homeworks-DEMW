@@ -19,6 +19,7 @@ import LogIn from "./LogIn";
 import NavComponent from "./components/NavComponent";
 import HomePage from "./pages/HomePage";
 import HomeFirebase from "./pages/HomeFirebase";
+import UploadsFirebase from "./pages/UploadsFirebase";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<Provider store={store}>
@@ -33,14 +34,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			{/* <Parent/> */}
 			{/* <MainApp /> */}
 			{/* <App /> */}
-			<NavLink to={"/"}>Register</NavLink>
+			{/* <NavLink to={"/"}>Register</NavLink>
 			<br />
 			<NavLink to={"/login"}>Log in</NavLink>
 			<Routes>
 				<Route index element={<Registro />}></Route>
 				<Route path="/login" element={<LogIn />}></Route>
 				<Route path="/home" element={<HomeFirebase />}></Route>
-			</Routes>
+			</Routes> */}
+			<UploadsFirebase />
 		</BrowserRouter>
 	</Provider>
 );
