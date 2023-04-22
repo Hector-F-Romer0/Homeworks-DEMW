@@ -14,7 +14,14 @@ export const authSlice = createSlice({
 		register: (state, action) => {
 			state.email = action.payload.email;
 		},
-		logout: (state, action) => {},
+		logout: (state, action) => {
+			state.status = "checking";
+			state.displayName = null;
+			state.uid = null;
+			state.email = null;
+			state.photoUrl = null;
+			state.errorMessage = null;
+		},
 		checkingCredentials: (state, action) => {
 			console.log("Checking");
 		},

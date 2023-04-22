@@ -33,13 +33,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			{/* <Parent/> */}
 			{/* <MainApp /> */}
 			{/* <App /> */}
-			<NavLink to={"/"}>Register</NavLink>
+			{/* <NavLink to={"/"}>Register</NavLink>
 			<br />
 			<NavLink to={"/login"}>Log in</NavLink>
 			<Routes>
 				<Route index element={<Registro />}></Route>
 				<Route path="/login" element={<LogIn />}></Route>
 				<Route path="/home" element={<HomeFirebase />}></Route>
+			</Routes> */}
+			<Routes>
+				<Route index element={<Registro />}></Route>
 			</Routes>
 		</BrowserRouter>
 	</Provider>

@@ -6,7 +6,7 @@ import {
 	signInWithPopup,
 } from "firebase/auth";
 
-import { register, login } from "./AuthSlice";
+import { register, login, logout } from "./AuthSlice";
 import { auth } from "../../../firebase/config";
 
 export const registerAuth = (email, password) => {
@@ -34,7 +34,7 @@ export const loginAuth = (email, password) => {
 			console.log(response);
 			const { uid, email, displayName, photoURL } = response.user;
 			dispatch(login({ uid, email, displayName, photoURL }));
-			navigate("/home");
+			// navigate("/home");
 			// const { email } = response.user;
 			// dispatch(register({ email }));
 		} else {
@@ -55,6 +55,19 @@ export const loginGoogleAuth = (email, password) => {
 			// dispatch(register({ email }));
 		} else {
 			throw new Error("Login failed.");
+		}
+	};
+};
+
+export const logOutAuth = () => {
+	return async (dispatch) => {
+		try {
+			await auth.signOut();
+			console.log("Signed Out");
+			dispatch(logout());
+		} catch (error) {
+			console.log(error);
+			throw new Error("Logout failed.");
 		}
 	};
 };
