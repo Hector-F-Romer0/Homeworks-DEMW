@@ -1,10 +1,12 @@
 import express from "express";
-import { crearUsuario, loginUsuario, revalidarToken } from "../controllers/auth.controller.js";
+import { crearUsuario, listarTareas, loginUsuario, revalidarToken } from "../controllers/auth.controller.js";
 import { check } from "express-validator";
 import { validarCampos } from "../middlewares/validar-campos.js";
+import { validarJWT } from "../middlewares/validar-token.js";
 const router = express.Router();
 
-router.get("/renew", revalidarToken);
+router.get("/renew", validarJWT, revalidarToken);
+router.get("/tasks", validarJWT, listarTareas);
 router.post(
 	"/",
 	[

@@ -16,6 +16,13 @@ const UsuarioSchema = Schema({
 	},
 });
 
+UsuarioSchema.virtual("tareas", {
+	ref: "Task",
+	localField: "_id",
+	foreignField: "user",
+	justOne: false,
+});
+
 const modelUser = model("Usuario", UsuarioSchema);
 
 export default modelUser;

@@ -2,6 +2,8 @@ import express from "express";
 import bcrypt from "bcrypt";
 
 import modelUser from "../models/Usuario.js";
+import { generarJWT } from "../helpers/jwt.js";
+import { model } from "mongoose";
 
 const crearUsuario = async (req, res = express.response) => {
 	const { name, email, password } = req.body;
@@ -33,34 +35,65 @@ const crearUsuario = async (req, res = express.response) => {
 };
 
 const loginUsuario = async (req, res = express.response) => {
-	const { email, password } = req.body;
-	let usuario = await modelUser.findOne({ email });
+	try {
+		const { email, password } = req.body;
+		let usuario = await modelUser.findOne({ email });
 
-	if (!usuario) {
-		return res.status(400).json({
+		if (!usuario) {
+			return res.status(400).json({
+				ok: false,
+				msg: "El usuario no existe en la base de datos.",
+			});
+		}
+
+		const passwordValid = bcrypt.compareSync(password, usuario.password);
+		if (!passwordValid) {
+			return res.status(400).json({
+				ok: false,
+				msg: "La contraseña no es correcta.",
+			});
+		}
+
+		const token = await generarJWT(usuario.id, usuario.name);
+
+		res.json({
+			ok: true,
+			usuario,
+			token,
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({
 			ok: false,
-			msg: "El usuario no existe en la base de datos.",
+			error,
 		});
 	}
+};
 
-	const passwordValid = bcrypt.compareSync(password, usuario.password);
-	if (!passwordValid) {
-		return res.status(400).json({
-			ok: false,
-			msg: "La contraseña no es correcta.",
-		});
-	}
+const revalidarToken = async (req, res = express.response) => {
+	const { uid, name } = req;
+	const token = await generarJWT(uid, name);
 
 	res.json({
 		ok: true,
-		usuario,
+		token,
 	});
 };
 
-const revalidarToken = (req, res = express.response) => {
-	res.json({
-		ok: true,
-	});
+const listarTareas = async (req, res = express.response) => {
+	try {
+		const tareas = await modelUser.find().populate("tareas", "title");
+		return res.status(200).json({
+			ok: true,
+			tareas,
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			ok: false,
+			msg: "Error interno",
+		});
+	}
 };
 
-export { loginUsuario, crearUsuario, revalidarToken };
+export { loginUsuario, crearUsuario, revalidarToken, listarTareas };
